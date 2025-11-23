@@ -1,0 +1,277 @@
+{
+  "meta": {
+    "generated_on_utc": "2025-11-06",
+    "currency": "USD",
+    "eligible_threshold": 30.0,
+    "outcome_legend": {
+      "success": "Charge succeeds and status updates to PAID",
+      "upcoming": "Charge scheduled for future (no attempt)",
+      "fail": "Charge fails and status updates to FAILED",
+      "fail_then_retry_success": "First attempt fails; retry should succeed",
+      "fail_then_retry_fail": "First attempt fails; retry should also fail",
+      "skip": "No attempt due to ineligibility or hidden PayLater"
+    },
+    "schedule_template": [
+      "t0",
+      "t0+30d",
+      "t0+60d"
+    ]
+  },
+  "users": [
+    {
+      "user_id": "U001",
+      "name": "Alya Pratama",
+      "verified": true,
+      "prior_successful_txns": 3,
+      "has_payment_method": true,
+      "default_pm_last4": "4242",
+      "timezone": "Asia/Jakarta",
+      "locale": "id-ID"
+    },
+    {
+      "user_id": "U002",
+      "name": "Bao Nguyen",
+      "verified": true,
+      "prior_successful_txns": 2,
+      "has_payment_method": false,
+      "default_pm_last4": null,
+      "timezone": "Asia/Ho_Chi_Minh",
+      "locale": "vi-VN"
+    },
+    {
+      "user_id": "U003",
+      "name": "Nur Izzah",
+      "verified": false,
+      "prior_successful_txns": 1,
+      "has_payment_method": true,
+      "default_pm_last4": "1881",
+      "timezone": "Asia/Kuala_Lumpur",
+      "locale": "ms-MY"
+    },
+    {
+      "user_id": "U004",
+      "name": "Kai Chen",
+      "verified": true,
+      "prior_successful_txns": 1,
+      "has_payment_method": true,
+      "default_pm_last4": "0005",
+      "timezone": "Asia/Singapore",
+      "locale": "en-SG"
+    },
+    {
+      "user_id": "U005",
+      "name": "Thao Le",
+      "verified": true,
+      "prior_successful_txns": 0,
+      "has_payment_method": true,
+      "default_pm_last4": "4111",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "locale": "vi-VN"
+    },
+    {
+      "user_id": "U006",
+      "name": "Rizky Saputra",
+      "verified": true,
+      "prior_successful_txns": 5,
+      "has_payment_method": true,
+      "default_pm_last4": "2222",
+      "timezone": "Asia/Jakarta",
+      "locale": "id-ID"
+    },
+    {
+      "user_id": "U007",
+      "name": "Maricar Dizon",
+      "verified": true,
+      "prior_successful_txns": 4,
+      "has_payment_method": true,
+      "default_pm_last4": "7357",
+      "timezone": "Asia/Manila",
+      "locale": "en-PH"
+    },
+    {
+      "user_id": "U008",
+      "name": "Minh Tran",
+      "verified": true,
+      "prior_successful_txns": 2,
+      "has_payment_method": true,
+      "default_pm_last4": "1212",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "locale": "vi-VN"
+    }
+  ],
+  "carts": [
+    {
+      "cart_id": "C001",
+      "user_id": "U001",
+      "total_amount": 120.0,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 3,
+      "notes": "Eligible \u2013 standard"
+    },
+    {
+      "cart_id": "C002",
+      "user_id": "U001",
+      "total_amount": 45.5,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 2,
+      "notes": "Eligible \u2013 small cart"
+    },
+    {
+      "cart_id": "C003",
+      "user_id": "U002",
+      "total_amount": 85.0,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 1,
+      "notes": "Eligible but no payment method"
+    },
+    {
+      "cart_id": "C004",
+      "user_id": "U003",
+      "total_amount": 150.0,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 4,
+      "notes": "Unverified user"
+    },
+    {
+      "cart_id": "C005",
+      "user_id": "U004",
+      "total_amount": 29.99,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 1,
+      "notes": "Below threshold \u2013 hidden/disabled"
+    },
+    {
+      "cart_id": "C006",
+      "user_id": "U005",
+      "total_amount": 60.0,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 2,
+      "notes": "No prior success \u2013 ineligible"
+    },
+    {
+      "cart_id": "C007",
+      "user_id": "U006",
+      "total_amount": 999.99,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 6,
+      "notes": "High value cart"
+    },
+    {
+      "cart_id": "C008",
+      "user_id": "U007",
+      "total_amount": 30.0,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 1,
+      "notes": "Exactly threshold \u2013 edge"
+    },
+    {
+      "cart_id": "C009",
+      "user_id": "U008",
+      "total_amount": 220.0,
+      "currency": "USD",
+      "eligible_threshold": 30.0,
+      "item_count": 5,
+      "notes": "Eligible \u2013 complex"
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "S001",
+      "user_id": "U001",
+      "cart_id": "C001",
+      "instalment1_outcome": "success",
+      "instalment2_outcome": "upcoming",
+      "instalment3_outcome": "upcoming",
+      "description": "Happy path: eligible user, charge #1 success."
+    },
+    {
+      "scenario_id": "S002",
+      "user_id": "U001",
+      "cart_id": "C002",
+      "instalment1_outcome": "fail_then_retry_success",
+      "instalment2_outcome": "upcoming",
+      "instalment3_outcome": "upcoming",
+      "description": "Charge #1 fails then retry succeeds."
+    },
+    {
+      "scenario_id": "S003",
+      "user_id": "U006",
+      "cart_id": "C007",
+      "instalment1_outcome": "success",
+      "instalment2_outcome": "fail",
+      "instalment3_outcome": "upcoming",
+      "description": "Charge #2 fails later (simulate delinquency)."
+    },
+    {
+      "scenario_id": "S004",
+      "user_id": "U002",
+      "cart_id": "C003",
+      "instalment1_outcome": "skip",
+      "instalment2_outcome": "skip",
+      "instalment3_outcome": "skip",
+      "description": "Ineligible: no payment method (eligibility check blocks flow)."
+    },
+    {
+      "scenario_id": "S005",
+      "user_id": "U003",
+      "cart_id": "C004",
+      "instalment1_outcome": "skip",
+      "instalment2_outcome": "skip",
+      "instalment3_outcome": "skip",
+      "description": "Ineligible: user not verified."
+    },
+    {
+      "scenario_id": "S006",
+      "user_id": "U005",
+      "cart_id": "C006",
+      "instalment1_outcome": "skip",
+      "instalment2_outcome": "skip",
+      "instalment3_outcome": "skip",
+      "description": "Ineligible: 0 prior successes."
+    },
+    {
+      "scenario_id": "S007",
+      "user_id": "U004",
+      "cart_id": "C005",
+      "instalment1_outcome": "skip",
+      "instalment2_outcome": "skip",
+      "instalment3_outcome": "skip",
+      "description": "Cart below threshold \u2013 PayLater hidden/disabled."
+    },
+    {
+      "scenario_id": "S008",
+      "user_id": "U007",
+      "cart_id": "C008",
+      "instalment1_outcome": "success",
+      "instalment2_outcome": "upcoming",
+      "instalment3_outcome": "upcoming",
+      "description": "Edge: exactly at threshold \u2013 allowed."
+    },
+    {
+      "scenario_id": "S009",
+      "user_id": "U008",
+      "cart_id": "C009",
+      "instalment1_outcome": "fail_then_retry_fail",
+      "instalment2_outcome": "upcoming",
+      "instalment3_outcome": "upcoming",
+      "description": "Repeated failure on charge #1."
+    },
+    {
+      "scenario_id": "S010",
+      "user_id": "U001",
+      "cart_id": "C001",
+      "instalment1_outcome": "success",
+      "instalment2_outcome": "success",
+      "instalment3_outcome": "success",
+      "description": "All three succeed (for full schedule demo)."
+    }
+  ]
+}

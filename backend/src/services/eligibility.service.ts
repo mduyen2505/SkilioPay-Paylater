@@ -11,19 +11,19 @@ export function checkEligibility(userId: string, cartId: string) {
   const user = mock_store.users[userId];
   const cart = mock_store.carts[cartId];
   if (!user || !cart)
-    return { eligible: false, reason: "User hoặc cart không tồn tại" };
+    return { eligible: false, reason: "User or cart does not exist." };
 
   if (!user.verified)
-    return { eligible: false, reason: "User chưa xác thực" };
+    return { eligible: false, reason: "User is not verified." };
 
   if (user.prior_successful_txns < 1)
-    return { eligible: false, reason: "Chưa có giao dịch thành công" };
+    return { eligible: false, reason: "No prior successful transactions found." };
 
   if (!user.has_payment_method)
-    return { eligible: false, reason: "Chưa có phương thức thanh toán liên kết" };
+    return { eligible: false, reason: "No payment method linked." };
 
   if (cart.total_amount < cart.eligible_threshold)
-    return { eligible: false, reason: "Giỏ hàng dưới threshold" };
+    return { eligible: false, reason: "Cart total is below eligibility threshold." };
 
   return { eligible: true };
 }

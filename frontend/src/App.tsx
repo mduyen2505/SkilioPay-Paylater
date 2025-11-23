@@ -4,7 +4,6 @@ import SelectUserPage from "./pages/SelectUserPage";
 import PaymentOptionsScreen from "./pages/CartScreen";
 import PaylaterDetailScreen from "./pages/PaylaterDetailScreen";
 import PayLaterInstallmentList from "./pages/PayLaterInstallmentList";
-import DevScenarioDashboard from "./pages/DevScenarioDashboard";
 
 
 import "./App.css";
@@ -29,8 +28,7 @@ export default function App() {
 />
 
         
- <Route path="/dev/scenarios" element={<DevScenarioDashboard />} />
-        
+
       </Routes>
     </BrowserRouter>
   );

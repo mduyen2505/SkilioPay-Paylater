@@ -19,27 +19,28 @@ const getCarts = (req: Request, res: Response) => {
 };
 
 
-// 3. Check eligibility
 const checkEligibility = (req: Request, res: Response) => {
   const { user_id, cart_id } = req.query as { user_id?: string; cart_id?: string };
   if (!user_id || !cart_id) {
-    return res.status(400).json({ eligible: false, reason: "Thiếu user_id hoặc cart_id" });
+    return res.status(400).json({ eligible: false, reason: "Missing user_id or cart_id." });
   }
   const user = mock_store.users[user_id];
   const cart = mock_store.carts[cart_id];
 
   if (!user || !cart)
-    return res.json({ eligible: false, reason: "User hoặc cart không tồn tại" });
+    return res.json({ eligible: false, reason: "User or cart does not exist." });
   if (!user.verified)
-    return res.json({ eligible: false, reason: "User chưa xác thực" });
+    return res.json({ eligible: false, reason: "User is not verified." });
   if (user.prior_successful_txns < 1)
-    return res.json({ eligible: false, reason: "Chưa có giao dịch thành công" });
+    return res.json({ eligible: false, reason: "No prior successful transactions found." });
   if (!user.has_payment_method)
-    return res.json({ eligible: false, reason: "Chưa có phương thức thanh toán liên kết" });
+    return res.json({ eligible: false, reason: "No payment method linked." });
   if (cart.total_amount < cart.eligible_threshold)
-    return res.json({ eligible: false, reason: "Giỏ hàng dưới threshold" });
+    return res.json({ eligible: false, reason: "Cart total is below eligibility threshold." });
+
   res.json({ eligible: true });
 };
+
 
 
 // 4. Create PayLater agreement
